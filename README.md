@@ -317,6 +317,15 @@ A árvore gerada será algo como:
     ]
 }
 ```
+# GRAMATICA
+programa_minipar ::= bloco_stmt
+bloco_stmt ::= bloco_SEQ | bloco_PAR
+bloco_SEQ ::= SEQ stmts
+bloco_PAR ::= PAR stmts
+stmts ::= atribuição | if_stmt | while_stmt | send | receive
+atribuição ::= id = expr
+expr ::= c_channel chan id id_comp1 id_comp2 | expr bin_op expr
+bin_op ::= + | - | * | / | > | < | and
+if_stmt ::= if ( bool ) stmt | if ( bool ) stmt else stmt
+while_stmt ::= while ( bool ) stmt
 
-### Conclusão
-Com esse parser, você pode analisar código em uma linguagem definida por esses tokens e gerar uma AST que pode ser usada para interpretação, execução ou outras transformações do código. Você também tem a possibilidade de modificar o parser ou adicionar novos tipos de comando ou expressão conforme necessário.
