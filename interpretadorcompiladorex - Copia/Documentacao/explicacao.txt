@@ -1,0 +1,68 @@
+O código fornecido define uma classe `Parser` que é responsável por analisar um conjunto de tokens e gerar uma árvore de sintaxe abstrata (AST) a partir deles. O parser segue uma abordagem recursiva descendente e usa uma série de métodos para processar diferentes tipos de instruções e expressões. Abaixo, é apresentado um resumo explicando o fluxo do código:
+
+### Fluxo Geral do Código
+
+1. **Inicialização e Setup**:
+   - O `Parser` é inicializado com uma lista de tokens e a posição atual no código (armazenada em `self.pos`).
+   - O método `_match()` é utilizado para garantir que o token atual seja do tipo esperado e avança para o próximo token, se for o caso. Caso contrário, gera um erro de sintaxe.
+   - O método `_peek()` é usado para olhar o próximo token sem consumi-lo, permitindo que o parser tome decisões baseadas no token atual.
+
+2. **Análise Sintática**:
+   - O método principal `parse()` inicia o processo de análise, percorrendo os tokens e gerando a AST. O loop continua enquanto houver tokens a serem analisados.
+   - O parser verifica o tipo do token atual e decide qual regra de produção deve ser aplicada. Ele pode lidar com diferentes tipos de blocos de código, como `SEQ` (sequência de instruções) e `PAR` (paralelismo).
+
+3. **Análise de Sequência e Paralelismo**:
+   - O método `_parse_seq()` lida com blocos de código sequenciais, onde as instruções são executadas uma após a outra.
+   - O método `_parse_par()` lida com blocos de código paralelos, que podem conter instruções que podem ser executadas simultaneamente.
+
+4. **Análise de Declarações e Comandos**:
+   - O método `_parse_statements()` é responsável por identificar e analisar os diferentes tipos de declarações ou comandos no código, como:
+     - **Atribuições** (`IDENTIFIER = expression`).
+     - **Condicionais** (`IF` e `ELSE`).
+     - **Laços de repetição** (`WHILE`).
+     - **Comandos de entrada** (`INPUT`).
+     - **Comandos de impressão** (`PRINT`).
+     - **Retornos** (`RETURN`).
+     - **Envios e Recebimentos de Mensagens** (`SEND`, `RECEIVE`).
+     - **Cálculos** (`CALCULATE`).
+
+5. **Análise de Expressões**:
+   - O método `_parse_expression()` lida com a análise de expressões, como valores literais (inteiros, strings, identificadores) e operações binárias (como soma, subtração, etc.).
+   - Se a expressão envolver parênteses, o parser recursivamente analisa a expressão interna. Caso contrário, ele tenta identificar o tipo da expressão diretamente.
+   - O parser também pode lidar com entradas interativas com `INPUT`, onde o usuário fornece dados para o programa.
+
+6. **Estruturas de Controle**:
+   - O método `_parse_if()` lida com a construção condicional `if-else`, analisando a condição e os dois ramos (verdadeiro e falso).
+   - O método `_parse_while()` lida com loops `while`, processando a condição e o corpo do loop.
+
+7. **Comandos Específicos**:
+   - O método `_parse_print()` lida com o comando `PRINT`, que exibe a expressão fornecida.
+   - O método `_parse_send_receive()` lida com os comandos `SEND` e `RECEIVE`, permitindo a comunicação entre diferentes partes do código ou entre sistemas.
+
+8. **Comandos de Cálculo**:
+   - O método `_parse_calculate()` lida com a operação de cálculo, processando expressões passadas como parâmetros.
+
+### Exemplo de Fluxo no Código:
+
+Considerando um bloco de código como:
+
+```python
+SEQ {
+    PRINT("Opções da calculadora: +, -, *, /")
+    operacao = INPUT("Digite a operação desejada (+, -, *, /): ")
+    valor1 = INPUT("Digite o primeiro valor: ")
+    valor2 = INPUT("Digite o segundo valor: ")
+    SEND(operacao, valor1, valor2)
+    resultado = RECEIVE()
+    PRINT("Resultado: ", resultado)
+}
+```
+
+1. **Início do `parse()`**: O método `parse()` é chamado. O parser encontra um token do tipo `SEQ` e chama `_parse_seq()`.
+2. **Processamento de `SEQ`**: O parser começa a processar um bloco de código delimitado por chaves (`LBRACE` e `RBRACE`), chamando `_parse_statements()` para analisar as instruções dentro do bloco.
+3. **Processamento das Instruções**: O parser encontra o comando `PRINT`, que é processado pelo método `_parse_print()`. Depois, encontra o comando `INPUT`, processando as entradas com `_parse_input()`. Em seguida, ele encontra os comandos `SEND` e `RECEIVE` e os processa com `_parse_send_receive()`.
+4. **Processamento de Resultados**: O parser processa a expressão `resultado` e chama `PRINT` para exibir o resultado.
+
+### Conclusão
+
+O parser segue uma lógica de processamento sequencial para analisar cada comando e gerar a AST correspondente. Ele pode lidar com uma variedade de declarações e expressões e é projetado para analisar blocos de código tanto sequenciais quanto paralelos, com suporte para controle de fluxo, manipulação de variáveis e comunicação entre diferentes partes do programa.

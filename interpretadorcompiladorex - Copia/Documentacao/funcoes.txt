@@ -1,0 +1,129 @@
+Vou detalhar o funcionamento de cada função na classe `Parser` que você forneceu, explicando o que cada uma faz no contexto de análise sintática do código.
+
+### 1. **`__init__(self, tokens)`**
+   - **Função**: Inicializa o objeto `Parser`.
+   - **Parâmetros**: 
+     - `tokens`: uma lista de tokens que representam o código a ser analisado.
+   - **O que faz**: 
+     - Armazena os tokens passados para o parser e define a posição inicial (`pos`) como 0.
+
+### 2. **`_match(self, expected_kind)`**
+   - **Função**: Verifica se o próximo token é do tipo esperado e avança para o próximo token.
+   - **Parâmetros**:
+     - `expected_kind`: o tipo de token esperado (ex: `'SEQ'`, `'LBRACE'`, `'IDENTIFIER'`).
+   - **O que faz**:
+     - Verifica se o tipo do token atual corresponde ao tipo esperado. Se sim, avança para o próximo token. Se não, gera um erro de sintaxe (`SyntaxError`), indicando que o tipo esperado não foi encontrado.
+
+### 3. **`_peek(self)`**
+   - **Função**: Retorna o próximo token, sem avançar para o próximo.
+   - **O que faz**:
+     - Se houver tokens restantes, retorna o próximo token; caso contrário, retorna `None`.
+
+### 4. **`parse(self)`**
+   - **Função**: O ponto de entrada principal para iniciar a análise sintática.
+   - **O que faz**:
+     - Inicia a análise do código, iterando sobre os tokens. 
+     - Verifica se o token atual é do tipo `'SEQ'` ou `'PAR'` (que indicam blocos de código sequenciais ou paralelos). Se for outro tipo de token, gera um erro de sintaxe.
+     - Chama os métodos `_parse_seq()` e `_parse_par()` dependendo do tipo de bloco encontrado.
+     - Retorna a árvore de sintaxe abstrata (AST) gerada.
+
+### 5. **`_parse_seq(self)`**
+   - **Função**: Analisa um bloco de código do tipo `SEQ` (sequência de instruções).
+   - **O que faz**:
+     - Verifica e consome o token `'SEQ'` e o token `'LBRACE'` (início de um bloco de código).
+     - Chama o método `_parse_statements()` para analisar as instruções dentro do bloco.
+     - Verifica e consome o token `'RBRACE'` (fim do bloco de código).
+     - Retorna um dicionário representando a estrutura do bloco `SEQ`.
+
+### 6. **`_parse_par(self)`**
+   - **Função**: Analisa um bloco de código do tipo `PAR` (paralelismo).
+   - **O que faz**:
+     - Verifica e consome o token `'PAR'` e o token `'LBRACE'` (início de um bloco de código paralelo).
+     - Chama o método `_parse_statements()` para analisar as instruções dentro do bloco paralelo.
+     - Verifica e consome o token `'RBRACE'` (fim do bloco de código paralelo).
+     - Retorna um dicionário representando a estrutura do bloco `PAR`.
+
+### 7. **`_parse_statements(self)`**
+   - **Função**: Analisa as instruções dentro de um bloco de código (seqüencial ou paralelo).
+   - **O que faz**:
+     - Enquanto o token atual não for um `'RBRACE'` (fim de um bloco de código), o parser tenta identificar e processar diferentes tipos de declarações (atribuições, condições, laços, etc.).
+     - Para cada tipo de instrução (como `IDENTIFIER` para atribuições, `IF` para condicionais, `WHILE` para loops, etc.), o método chama a função correspondente para analisá-la.
+     - Se encontrar um tipo de instrução não esperado, gera um erro de sintaxe.
+     - Retorna uma lista com todas as instruções analisadas.
+
+### 8. **`_parse_assignment(self)`**
+   - **Função**: Analisa uma atribuição de valor a uma variável.
+   - **O que faz**:
+     - Verifica se o próximo token é um identificador (nome da variável).
+     - Verifica se o próximo token é um operador de atribuição (`ASSIGN`).
+     - Analisa a expressão que será atribuída à variável (usando o método `_parse_expression()`).
+     - Verifica se o próximo token é um ponto e vírgula (`SEMI`), finalizando a instrução.
+     - Retorna um dicionário representando a atribuição.
+
+### 9. **`_parse_expression(self)`**
+   - **Função**: Analisa uma expressão, que pode ser um valor literal, uma operação ou uma subexpressão entre parênteses.
+   - **O que faz**:
+     - Se o token for um valor (inteiro, identificador ou string), ele consome esse token e verifica se há uma operação binária a ser aplicada (como `+`, `-`, etc.).
+     - Se o token for `INPUT`, ele analisa a expressão dentro de um comando `INPUT()`.
+     - Se o token for `'LPAREN'`, indica uma subexpressão entre parênteses, então o método é chamado recursivamente para analisar a expressão interna.
+     - Retorna um dicionário que representa a expressão (valor ou operação).
+
+### 10. **`_parse_if(self)`**
+   - **Função**: Analisa uma estrutura condicional `if-else`.
+   - **O que faz**:
+     - Verifica e consome o token `'IF'` e os parênteses ao redor da condição.
+     - Analisa a condição com `_parse_expression()`.
+     - Analisa o bloco de código verdadeiro (depois de `'LBRACE'` e antes de `'RBRACE'`).
+     - Se houver um token `ELSE`, analisa o bloco de código falso.
+     - Retorna um dicionário representando a estrutura condicional, com a condição e os dois blocos (verdadeiro e falso).
+
+### 11. **`_parse_while(self)`**
+   - **Função**: Analisa um laço `while`.
+   - **O que faz**:
+     - Verifica e consome o token `'WHILE'` e os parênteses ao redor da condição.
+     - Analisa a condição com `_parse_expression()`.
+     - Analisa o corpo do laço (o código dentro de `'LBRACE'` e `'RBRACE'`).
+     - Retorna um dicionário representando o laço `while`, com a condição e o corpo do laço.
+
+### 12. **`_parse_print(self)`**
+   - **Função**: Analisa uma instrução `PRINT`.
+   - **O que faz**:
+     - Verifica e consome o token `'PRINT'` e os parênteses ao redor da expressão.
+     - Analisa a expressão que será impressa com `_parse_expression()`.
+     - Verifica o ponto e vírgula final (`SEMI`).
+     - Retorna um dicionário representando o comando `PRINT`.
+
+### 13. **`_parse_send_receive(self, kind)`**
+   - **Função**: Analisa comandos `SEND` ou `RECEIVE`.
+   - **Parâmetros**: 
+     - `kind`: pode ser `'SEND'` ou `'RECEIVE'`, indicando qual tipo de comando analisar.
+   - **O que faz**:
+     - Verifica e consome o token `SEND` ou `RECEIVE`, e os parênteses ao redor dos argumentos.
+     - Se for um comando `SEND`, analisa a expressão a ser enviada.
+     - Verifica o ponto e vírgula final (`SEMI`).
+     - Retorna um dicionário representando o comando `SEND` ou `RECEIVE`.
+
+### 14. **`_parse_return(self)`**
+   - **Função**: Analisa uma instrução `RETURN`.
+   - **O que faz**:
+     - Verifica e consome o token `'RETURN'`.
+     - Analisa a expressão que será retornada com `_parse_expression()`.
+     - Verifica o ponto e vírgula final (`SEMI`).
+     - Retorna um dicionário representando a instrução `RETURN`.
+
+### 15. **`_parse_input(self)`**
+   - **Função**: Analisa um comando `INPUT`.
+   - **O que faz**:
+     - Verifica e consome o token `'INPUT'` e os parênteses ao redor da expressão de prompt.
+     - Analisa o prompt com `_parse_expression()`.
+     - Verifica o ponto e vírgula final (`SEMI`).
+     - Retorna um dicionário representando o comando `INPUT`.
+
+### 16. **`_parse_calculate(self)`**
+   - **Função**: Analisa uma operação `CALCULATE`.
+   - **O que faz**:
+     - Verifica e consome o token `'CALCULATE'` e os parênteses ao redor da expressão.
+     - Analisa a expressão a ser calculada com `_parse_expression()`.
+     - Verifica o ponto e vírgula final (`SEMI`).
+     - Retorna um dicionário representando a operação `CALCULATE`.
+

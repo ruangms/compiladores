@@ -1,0 +1,717 @@
+('SEQ', 'SEQ')
+('IF', 'if')
+('LPAREN', '(')
+('IDENTIFIER', 'x')
+('GREATER', '>')
+('INTEGER', '10')
+('RPAREN', ')')
+('LBRACE', '{')
+('SEND', 'send')
+('LPAREN', '(')
+('C_CHANNEL', 'c_channel')
+('RPAREN', ')')
+('SEMI', ';')
+('IDENTIFIER', 'Output')
+('LPAREN', '(')
+('STRING', '"Hello, world!"')
+('RPAREN', ')')
+('SEMI', ';')
+('IDENTIFIER', 'x')
+('ASSIGN', '=')
+('INTEGER', '42')
+('OPERATOR', '+')
+('INTEGER', '3')
+('OPERATOR', '*')
+('INTEGER', '5')
+('SEMI', ';')
+('IDENTIFIER', 'y')
+('ASSIGN', '=')
+('IDENTIFIER', 'x')
+('LESS', '<')
+('INTEGER', '10')
+('OR', '|')
+('OR', '|')
+('IDENTIFIER', 'x')
+('ASSIGN', '=')
+('ASSIGN', '=')
+('INTEGER', '10')
+('SEMI', ';')
+('WHILE', 'while')
+('LPAREN', '(')
+('IDENTIFIER', 'y')
+('GREATER', '>')
+('INTEGER', '0')
+('RPAREN', ')')
+('LBRACE', '{')
+('IDENTIFIER', 'x')
+('ASSIGN', '=')
+('IDENTIFIER', 'x')
+('OPERATOR', '-')
+('INTEGER', '1')
+('SEMI', ';')
+('RBRACE', '}')
+('RBRACE', '}')
+('ELSE', 'else')
+('LBRACE', '{')
+('IDENTIFIER', 'Output')
+('LPAREN', '(')
+('STRING', '"Fim"')
+('RPAREN', ')')
+('SEMI', ';')
+('RBRACE', '}')
+('SEQ', 'SEQ')
+('IF', 'if')
+('LPAREN', '(')
+('IDENTIFIER', 'x')
+('GREATER', '>')
+('INTEGER', '10')
+('RPAREN', ')')
+('LBRACE', '{')
+('SEND', 'send')
+('LPAREN', '(')
+('C_CHANNEL', 'c_channel')
+('RPAREN', ')')
+('SEMI', ';')
+('IDENTIFIER', 'Output')
+('LPAREN', '(')
+('STRING', '"Hello, world!"')
+('RPAREN', ')')
+('SEMI', ';')
+('IDENTIFIER', 'x')
+('ASSIGN', '=')
+('INTEGER', '42')
+('OPERATOR', '+')
+('INTEGER', '3')
+('OPERATOR', '*')
+('INTEGER', '5')
+('SEMI', ';')
+('IDENTIFIER', 'y')
+('ASSIGN', '=')
+('IDENTIFIER', 'x')
+('LESS', '<')
+('INTEGER', '10')
+('OR', '|')
+('IDENTIFIER', 'x')
+('ASSIGN', '=')
+('ASSIGN', '=')
+('INTEGER', '10')
+('SEMI', ';')
+('WHILE', 'while')
+('LPAREN', '(')
+('IDENTIFIER', 'y')
+('GREATER', '>')
+('INTEGER', '0')
+('RPAREN', ')')
+('LBRACE', '{')
+('IDENTIFIER', 'x')
+('ASSIGN', '=')
+('IDENTIFIER', 'x')
+('OPERATOR', '-')
+('INTEGER', '1')
+('SEMI', ';')
+('RBRACE', '}')
+('RBRACE', '}')
+('ELSE', 'else')
+('LBRACE', '{')
+('IDENTIFIER', 'Output')
+('LPAREN', '(')
+('STRING', '"End"')
+('RPAREN', ')')
+('SEMI', ';')
+('RBRACE', '}')
+('SEQ', 'SEQ')
+('LBRACE', '{')
+('IDENTIFIER', 'x')
+('ASSIGN', '=')
+('INTEGER', '10')
+('IDENTIFIER', 'y')
+('ASSIGN', '=')
+('INTEGER', '20')
+('IDENTIFIER', 'z')
+('ASSIGN', '=')
+('IDENTIFIER', 'x')
+('OPERATOR', '+')
+('IDENTIFIER', 'y')
+('SEND', 'send')
+('LPAREN', '(')
+('STRING', '"Mensagem do Processo 1"')
+('RPAREN', ')')
+('RECEIVE', 'receive')
+('LPAREN', '(')
+('RPAREN', ')')
+('RBRACE', '}')
+('PAR', 'PAR')
+('LBRACE', '{')
+('SEND', 'send')
+('LPAREN', '(')
+('STRING', '"Mensagem do Processo 2"')
+('RPAREN', ')')
+('RECEIVE', 'receive')
+('LPAREN', '(')
+('RPAREN', ')')
+('RBRACE', '}')
+('SEQ', 'SEQ')
+('LBRACE', '{')
+('IDENTIFIER', 'a')
+('ASSIGN', '=')
+('INTEGER', '5')
+('OPERATOR', '+')
+('INTEGER', '3')
+('IDENTIFIER', 'b')
+('ASSIGN', '=')
+('IDENTIFIER', 'a')
+('OPERATOR', '*')
+('INTEGER', '2')
+('PRINT', 'print')
+('LPAREN', '(')
+('IDENTIFIER', 'b')
+('RPAREN', ')')
+('RBRACE', '}')
+('SEQ', 'SEQ')
+('LBRACE', '{')
+('IF', 'if')
+('IDENTIFIER', 'a')
+('ASSIGN', '=')
+('ASSIGN', '=')
+('IDENTIFIER', 'b')
+('LBRACE', '{')
+('PRINT', 'print')
+('LPAREN', '(')
+('STRING', '"São iguais"')
+('RPAREN', ')')
+('RBRACE', '}')
+('ELSE', 'else')
+('LBRACE', '{')
+('PRINT', 'print')
+('LPAREN', '(')
+('STRING', '"São diferentes"')
+('RPAREN', ')')
+('RBRACE', '}')
+('RBRACE', '}')
+('PAR', 'PAR')
+('LBRACE', '{')
+('SEND', 'send')
+('LPAREN', '(')
+('STRING', '"Mensagem para outro processo"')
+('RPAREN', ')')
+('RECEIVE', 'receive')
+('LPAREN', '(')
+('RPAREN', ')')
+('RBRACE', '}')
+
+
+
+
+('SEQ', 'SEQ')
+('IF', 'if')
+('LPAREN', '(')
+('IDENTIFIER', 'x')
+('GREATER', '>')
+('INTEGER', '10')
+('RPAREN', ')')
+('LBRACE', '{')
+('SEND', 'send')
+('LPAREN', '(')
+('C_CHANNEL', 'c_channel')
+('RPAREN', ')')
+('SEMI', ';')
+('IDENTIFIER', 'Output')
+('LPAREN', '(')
+('STRING', '"Hello, world!"')
+('RPAREN', ')')
+('SEMI', ';')
+('IDENTIFIER', 'x')
+('ASSIGN', '=')
+('INTEGER', '42')
+('OPERATOR', '+')
+('INTEGER', '3')
+('OPERATOR', '*')
+('INTEGER', '5')
+('SEMI', ';')
+('IDENTIFIER', 'y')
+('ASSIGN', '=')
+('IDENTIFIER', 'x')
+('LESS', '<')
+('INTEGER', '10')
+('OR', '|')
+('OR', '|')
+('IDENTIFIER', 'x')
+('ASSIGN', '=')
+('ASSIGN', '=')
+('INTEGER', '10')
+('SEMI', ';')
+('WHILE', 'while')
+('LPAREN', '(')
+('IDENTIFIER', 'y')
+('GREATER', '>')
+('INTEGER', '0')
+('RPAREN', ')')
+('LBRACE', '{')
+('IDENTIFIER', 'x')
+('ASSIGN', '=')
+('IDENTIFIER', 'x')
+('OPERATOR', '-')
+('INTEGER', '1')
+('SEMI', ';')
+('RBRACE', '}')
+('RBRACE', '}')
+('ELSE', 'else')
+('LBRACE', '{')
+('IDENTIFIER', 'Output')
+('LPAREN', '(')
+('STRING', '"End"')
+('RPAREN', ')')
+('SEMI', ';')
+('RBRACE', '}')
+('SEQ', 'SEQ')
+('LBRACE', '{')
+('IDENTIFIER', 'x')
+('ASSIGN', '=')
+('INTEGER', '10')
+('IDENTIFIER', 'y')
+('ASSIGN', '=')
+('INTEGER', '20')
+('IDENTIFIER', 'z')
+('ASSIGN', '=')
+('IDENTIFIER', 'x')
+('OPERATOR', '+')
+('IDENTIFIER', 'y')
+('SEND', 'send')
+('LPAREN', '(')
+('STRING', '"Mensagem do Processo 1"')
+('RPAREN', ')')
+('RECEIVE', 'receive')
+('LPAREN', '(')
+('RPAREN', ')')
+('RBRACE', '}')
+('PAR', 'PAR')
+('LBRACE', '{')
+('SEND', 'send')
+('LPAREN', '(')
+('STRING', '"Mensagem do Processo 2"')
+('RPAREN', ')')
+('RECEIVE', 'receive')
+('LPAREN', '(')
+('RPAREN', ')')
+('RBRACE', '}')
+('SEQ', 'SEQ')
+('LBRACE', '{')
+('IDENTIFIER', 'a')
+('ASSIGN', '=')
+('INTEGER', '5')
+('OPERATOR', '+')
+('INTEGER', '3')
+('IDENTIFIER', 'b')
+('ASSIGN', '=')
+('IDENTIFIER', 'a')
+('OPERATOR', '*')
+('INTEGER', '2')
+('PRINT', 'print')
+('LPAREN', '(')
+('IDENTIFIER', 'b')
+('RPAREN', ')')
+('RBRACE', '}')
+('SEQ', 'SEQ')
+('LBRACE', '{')
+('IF', 'if')
+('IDENTIFIER', 'a')
+('ASSIGN', '=')
+('ASSIGN', '=')
+('IDENTIFIER', 'b')
+('LBRACE', '{')
+('PRINT', 'print')
+('LPAREN', '(')
+('STRING', '"São iguais"')
+('RPAREN', ')')
+('RBRACE', '}')
+('ELSE', 'else')
+('LBRACE', '{')
+('PRINT', 'print')
+('LPAREN', '(')
+('STRING', '"São diferentes"')
+('RPAREN', ')')
+('RBRACE', '}')
+('RBRACE', '}')
+('PAR', 'PAR')
+('LBRACE', '{')
+('SEND', 'send')
+('LPAREN', '(')
+('STRING', '"Mensagem para outro processo"')
+('RPAREN', ')')
+('RECEIVE', 'receive')
+('LPAREN', '(')
+('RPAREN', ')')
+('RBRACE', '}')
+
+Additional Edge Case Tests:
+Testing: 123
+('INTEGER', '123')
+----------------------------------------
+Testing: "Hello, world!"
+('STRING', '"Hello, world!"')
+----------------------------------------
+Testing: 'Single quoted string'
+('STRING', "'Single quoted string'")
+----------------------------------------
+Testing: x
+('IDENTIFIER', 'x')
+----------------------------------------
+Testing: c_channel
+('C_CHANNEL', 'c_channel')
+----------------------------------------
+Testing: send
+('SEND', 'send')
+----------------------------------------
+Testing: a + b * c
+('IDENTIFIER', 'a')
+('OPERATOR', '+')
+('IDENTIFIER', 'b')
+('OPERATOR', '*')
+('IDENTIFIER', 'c')
+----------------------------------------
+Testing: (a + b)
+('LPAREN', '(')
+('IDENTIFIER', 'a')
+('OPERATOR', '+')
+('IDENTIFIER', 'b')
+('RPAREN', ')')
+----------------------------------------
+Testing: x < 10
+('IDENTIFIER', 'x')
+('LESS', '<')
+('INTEGER', '10')
+----------------------------------------
+Testing: x <= y
+('IDENTIFIER', 'x')
+('LESS', '<')
+('ASSIGN', '=')
+('IDENTIFIER', 'y')
+----------------------------------------
+Testing: x >= y
+('IDENTIFIER', 'x')
+('GREATER', '>')
+('ASSIGN', '=')
+('IDENTIFIER', 'y')
+----------------------------------------
+Testing: x == y
+('IDENTIFIER', 'x')
+('ASSIGN', '=')
+('ASSIGN', '=')
+('IDENTIFIER', 'y')
+----------------------------------------
+Testing: x != y
+('IDENTIFIER', 'x')
+('DIFFERENT', '!=')
+('IDENTIFIER', 'y')
+----------------------------------------
+Testing: {
+('LBRACE', '{')
+----------------------------------------
+Testing: }
+('RBRACE', '}')
+----------------------------------------
+Testing: (
+('LPAREN', '(')
+----------------------------------------
+Testing: )
+('RPAREN', ')')
+----------------------------------------
+Testing: ;
+('SEMI', ';')
+----------------------------------------
+Testing: ,
+('COMMA', ',')
+----------------------------------------
+Testing: =
+('ASSIGN', '=')
+----------------------------------------
+Testing: ==
+('ASSIGN', '=')
+('ASSIGN', '=')
+----------------------------------------
+Testing: <=
+('LESS', '<')
+('ASSIGN', '=')
+----------------------------------------
+Testing: >=
+('GREATER', '>')
+('ASSIGN', '=')
+----------------------------------------
+Testing: <
+('LESS', '<')
+----------------------------------------
+Testing: >
+('GREATER', '>')
+----------------------------------------
+Testing: a.b
+('IDENTIFIER', 'a')
+('DOT', '.')
+('IDENTIFIER', 'b')
+----------------------------------------
+Testing: # comment
+----------------------------------------
+Testing: while
+('WHILE', 'while')
+----------------------------------------
+Testing: else
+('ELSE', 'else')
+----------------------------------------
+
+
+
+
+
+@@@
+
+
+
+""
+# Testando o lexer com uma variedade de entradas
+test_input = '''
+# This is a comment
+SEQ if (x > 10) {
+    send(c_channel);
+    Output("Hello, world!");
+    x = 42 + 3 * 5;
+    y = x < 10 || x == 10;
+    while (y > 0) {
+        x = x - 1;
+    }
+}
+else {
+    Output("End");
+}
+SEQ {
+    x = 10
+    y = 20
+    z = x + y
+    send("Mensagem do Processo 1")
+    receive()
+}
+PAR {
+    send("Mensagem do Processo 2")
+    receive()
+}
+SEQ {
+    a = 5 + 3
+    b = a * 2
+    print(b)
+}
+SEQ {
+    if a == b {
+        print("SÃ£o iguais")
+    }
+    else {
+        print("SÃ£o diferentes")
+    }
+}
+PAR {
+    send("Mensagem para outro processo")
+    receive()
+}
+#'''
+
+# Feed the code to the lexer
+tokens_extraidos = lexer(test_input)
+
+# Tokenize and display the tokens
+for token in tokens_extraidos:
+    print(token)
+
+# Testando casos de borda adicionais
+edge_case_inputs = [
+    "123",  # Integer test
+    "\"Hello, world!\"",  # String test with double quotes
+    "'Single quoted string'",  # String test with single quotes
+    "x",  # Identifier test
+    "c_channel",  # Reserved word test
+    "send",  # Reserved word test
+    "a + b * c",  # Expression with operators
+    "(a + b)",  # Parentheses test
+    "x < 10",  # Comparison operator test
+    "x <= y",  # Comparison operator test (<=)
+    "x >= y",  # Comparison operator test (>=)
+    "x == y",  # Comparison operator test (==)
+    "x != y",  # Comparison operator test (!=)
+    "{",  # Open brace test
+    "}",  # Close brace test
+    "(",  # Open parenthesis test
+    ")",  # Close parenthesis test
+    ";",  # Semicolon test
+    ",",  # Comma test
+    "=",  # Assignment test
+    "==",  # Equality test
+    "<=",  # Less than or equal test
+    ">=",  # Greater than or equal test
+    "<",  # Less than test
+    ">",  # Greater than test
+    "a.b",  # Dot notation test
+    "# comment",  # Comment test
+    "while",  # Reserved word test (while)
+    "else",  # Reserved word test (else)
+]
+
+
+print("\nAdditional Edge Case Tests:")
+for edge_case in edge_case_inputs:
+    print(f"Testing: {edge_case}")
+    tokens_extraidos = lexer(edge_case)
+    for token in tokens_extraidos:
+        print(token)
+    print("-" * 40)
+
+@@@
+
+
+
+
+
+
+# Testando o Lexer e o Parser
+codigo_fonte = """
+
+
+SEQ {
+    print("Opções da calculadora: +, -, *, /");
+    operacao = INPUT("Digite a operação desejada (+, -, *, /): ");
+    valor1 = INPUT("Digite o primeiro valor: ");
+    valor2 = INPUT("Digite o segundo valor: ");
+    send(operacao, valor1, valor2);
+    #resultado = receive();
+    #print("Resultado:", resultado);
+}
+SEQ {
+    print("Hello, World!");
+}
+SEQ {
+    a = 5 + 3;
+    b = a * 2;
+    print(b);
+}
+SEQ {
+    print("Hello, World!");
+    a = 5 + 3;
+    b = a * 2;
+    print(b);
+}
+SEQ {
+    if (x > 10) {
+        print("x is greater than 10");
+    } else {
+        print("x is less than or equal to 10");
+    }
+}
+SEQ {
+    while (x < 10) {
+        x = x + 1;
+    }
+    print(x);
+}
+
+
+SEQ {
+    if (x > 5 and y < 10) {
+        print("Condition is true");
+    } else {
+        print("Condition is false");
+    }
+}
+
+SEQ {
+    g = INPUT("digite aqui");
+    a = fibonacci(5);
+    print(a);
+    print(g);
+}
+    
+
+SEQ {
+    b = factorial(4);
+    print(b);
+
+}
+
+
+"""
+
+
+
+
+
+
+SEQ {
+    print("Hello, World!");
+    a = 5 + 3;
+    b = a * 2;
+    print(b);
+    send(a, b);
+    receive(x, y);
+
+}
+SEQ { 
+    C_CHANNEL a b c; 
+}
+
+SEQ {
+    print("Hello, World!");
+    a = 5 + 3;
+    b = a * 2;
+    print(b);
+    send(a, b);
+    receive(x, y);
+
+}
+SEQ {
+    if (x > 10) {
+        print("x is greater than 10");
+    } else {
+        print("x is less than or equal to 10");
+    }
+}
+SEQ {
+    while (x < 10) {
+        x = x + 1;
+    }
+    print(x);
+}
+
+
+SEQ {
+    if (x > 5 and y < 10) {
+        print("Condition is true");
+    } else {
+        print("Condition is false");
+    }
+}
+
+SEQ {
+    g = INPUT("digite aqui");
+    a = fibonacci(5);
+    print(a);
+    print(g);
+}
+    
+
+SEQ {
+    b = factorial(4);
+    print(b);
+
+}
+PAR {
+    print("This is parallel process 1");
+    print("This is parallel process 2");
+}
+
+SEQ {
+    r_fatorial = factorial(7);
+    print("Fatorial de 7:");
+    print(r_fatorial);
+}
+
+
+SEQ {
+    r_fibonacci = fibonacci(10);
+    print("Termo 10 da SÃ©rie de Fibonacci:");
+    print(r_fibonacci);
+}
+ 
