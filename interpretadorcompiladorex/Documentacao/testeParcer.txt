@@ -1,0 +1,412 @@
+Tokens gerados pelo Lexer:
+('SEQ', 'SEQ')
+('LBRACE', '{')
+('PRINT', 'print')
+('LPAREN', '(')
+('STRING', 'Hello, World!')
+('RPAREN', ')')
+('SEMI', ';')
+('RBRACE', '}')
+('SEQ', 'SEQ')
+('LBRACE', '{')
+('IDENTIFIER', 'a')
+('ASSIGN', '=')
+('INTEGER', '5')
+('OPERATOR', '+')
+('INTEGER', '3')
+('SEMI', ';')
+('IDENTIFIER', 'b')
+('ASSIGN', '=')
+('IDENTIFIER', 'a')
+('OPERATOR', '*')
+('INTEGER', '2')
+('SEMI', ';')
+('PRINT', 'print')
+('LPAREN', '(')
+('IDENTIFIER', 'b')
+('RPAREN', ')')
+('SEMI', ';')
+('RBRACE', '}')
+('SEQ', 'SEQ')
+('LBRACE', '{')
+('IF', 'if')
+('LPAREN', '(')
+('IDENTIFIER', 'x')
+('GREATER', '>')
+('INTEGER', '10')
+('RPAREN', ')')
+('LBRACE', '{')
+('PRINT', 'print')
+('LPAREN', '(')
+('STRING', 'x is greater than 10')
+('RPAREN', ')')
+('SEMI', ';')
+('RBRACE', '}')
+('ELSE', 'else')
+('LBRACE', '{')
+('PRINT', 'print')
+('LPAREN', '(')
+('STRING', 'x is less than or equal to 10')
+('RPAREN', ')')
+('SEMI', ';')
+('RBRACE', '}')
+('RBRACE', '}')
+('SEQ', 'SEQ')
+('LBRACE', '{')
+('WHILE', 'while')
+('LPAREN', '(')
+('IDENTIFIER', 'x')
+('LESS', '<')
+('INTEGER', '10')
+('RPAREN', ')')
+('LBRACE', '{')
+('IDENTIFIER', 'x')
+('ASSIGN', '=')
+('IDENTIFIER', 'x')
+('OPERATOR', '+')
+('INTEGER', '1')
+('SEMI', ';')
+('RBRACE', '}')
+('PRINT', 'print')
+('LPAREN', '(')
+('IDENTIFIER', 'x')
+('RPAREN', ')')
+('SEMI', ';')
+('RBRACE', '}')
+('PAR', 'PAR')
+('LBRACE', '{')
+('PRINT', 'print')
+('LPAREN', '(')
+('STRING', 'This is parallel process 1')
+('RPAREN', ')')
+('SEMI', ';')
+('PRINT', 'print')
+('LPAREN', '(')
+('STRING', 'This is parallel process 2')
+('RPAREN', ')')
+('SEMI', ';')
+('RBRACE', '}')
+('SEQ', 'SEQ')
+('LBRACE', '{')
+('IF', 'if')
+('LPAREN', '(')
+('IDENTIFIER', 'x')
+('GREATER', '>')
+('INTEGER', '5')
+('AND', 'and')
+('IDENTIFIER', 'y')
+('LESS', '<')
+('INTEGER', '10')
+('RPAREN', ')')
+('LBRACE', '{')
+('PRINT', 'print')
+('LPAREN', '(')
+('STRING', 'Condition is true')
+('RPAREN', ')')
+('SEMI', ';')
+('RBRACE', '}')
+('ELSE', 'else')
+('LBRACE', '{')
+('PRINT', 'print')
+('LPAREN', '(')
+('STRING', 'Condition is false')
+('RPAREN', ')')
+('SEMI', ';')
+('RBRACE', '}')
+('RBRACE', '}')
+
+AST gerada pelo Parser:
+[{'statements': [{'expression': {'type': 'value', 'value': 'Hello, World!'},
+                  'type': 'print'}],
+  'type': 'SEQ'},
+ {'statements': [{'identifier': 'a',
+                  'type': 'assignment',
+                  'value': {'left': '5',
+                            'operator': '+',
+                            'right': {'type': 'value', 'value': '3'},
+                            'type': 'binary_op'}},
+                 {'identifier': 'b',
+                  'type': 'assignment',
+                  'value': {'left': 'a',
+                            'operator': '*',
+                            'right': {'type': 'value', 'value': '2'},
+                            'type': 'binary_op'}},
+                 {'expression': {'type': 'value', 'value': 'b'},
+                  'type': 'print'}],
+  'type': 'SEQ'},
+ {'statements': [{'condition': {'left': 'x',
+                                'operator': '>',
+                                'right': {'type': 'value', 'value': '10'},
+                                'type': 'binary_op'},
+                  'false_branch': [{'expression': {'type': 'value',
+                                                   'value': 'x is less than or '
+                                                            'equal to 10'},
+                                    'type': 'print'}],
+                  'true_branch': [{'expression': {'type': 'value',
+                                                  'value': 'x is greater than '
+                                                           '10'},
+                                   'type': 'print'}],
+                  'type': 'if'}],
+  'type': 'SEQ'},
+ {'statements': [{'body': [{'identifier': 'x',
+                            'type': 'assignment',
+                            'value': {'left': 'x',
+                                      'operator': '+',
+                                      'right': {'type': 'value', 'value': '1'},
+                                      'type': 'binary_op'}}],
+                  'condition': {'left': 'x',
+                                'operator': '<',
+                                'right': {'type': 'value', 'value': '10'},
+                                'type': 'binary_op'},
+                  'type': 'while'},
+                 {'expression': {'type': 'value', 'value': 'x'},
+                  'type': 'print'}],
+  'type': 'SEQ'},
+ {'statements': [{'expression': {'type': 'value',
+                                 'value': 'This is parallel process 1'},
+                  'type': 'print'},
+                 {'expression': {'type': 'value',
+                                 'value': 'This is parallel process 2'},
+                  'type': 'print'}],
+  'type': 'PAR'},
+ {'statements': [{'condition': {'left': 'x',
+                                'operator': '>',
+                                'right': {'left': '5',
+                                          'operator': 'and',
+                                          'right': {'left': 'y',
+                                                    'operator': '<',
+                                                    'right': {'type': 'value',
+                                                              'value': '10'},
+                                                    'type': 'binary_op'},
+                                          'type': 'binary_op'},
+                                'type': 'binary_op'},
+                  'false_branch': [{'expression': {'type': 'value',
+                                                   'value': 'Condition is '
+                                                            'false'},
+                                    'type': 'print'}],
+                  'true_branch': [{'expression': {'type': 'value',
+                                                  'value': 'Condition is true'},
+                                   'type': 'print'}],
+                  'type': 'if'}],
+  'type': 'SEQ'}]
+
+
+
+
+
+
+
+
+
+
+AST gerada pelo Parser:
+Digite a opera??o desejada (+, -, *, /): _
+Digite o primeiro valor: 0
+Digite o segundo valor: 9
+digite aqui9
+[{'statements': [{'expression': {'type': 'value',
+                                 'value': 'Op??es da calculadora: +, -, *, /'},
+                  'type': 'print'},
+                 {'identifier': 'operacao', 'prompt': '_', 'type': 'input'},
+                 {'identifier': 'valor1', 'prompt': '0', 'type': 'input'},
+                 {'identifier': 'valor2', 'prompt': '9', 'type': 'input'},
+                 {'operands': [{'type': 'value', 'value': 'operacao'},
+                               {'type': 'value', 'value': 'valor1'},
+                               {'type': 'value', 'value': 'valor2'}],
+                  'type': 'send'}],
+  'type': 'SEQ'},
+ {'statements': [{'expression': {'type': 'value', 'value': 'Hello, World!'},
+                  'type': 'print'}],
+  'type': 'SEQ'},
+ {'statements': [{'identifier': 'a',
+                  'type': 'assignment',
+                  'value': {'left': '5',
+                            'operator': '+',
+                            'right': {'type': 'value', 'value': '3'},
+                            'type': 'binary_op'}},
+                 {'identifier': 'b',
+                  'type': 'assignment',
+                  'value': {'left': 'a',
+                            'operator': '*',
+                            'right': {'type': 'value', 'value': '2'},
+                            'type': 'binary_op'}},
+                 {'expression': {'type': 'value', 'value': 'b'},
+                  'type': 'print'}],
+  'type': 'SEQ'},
+ {'statements': [{'expression': {'type': 'value', 'value': 'Hello, World!'},
+                  'type': 'print'},
+                 {'identifier': 'a',
+                  'type': 'assignment',
+                  'value': {'left': '5',
+                            'operator': '+',
+                            'right': {'type': 'value', 'value': '3'},
+                            'type': 'binary_op'}},
+                 {'identifier': 'b',
+                  'type': 'assignment',
+                  'value': {'left': 'a',
+                            'operator': '*',
+                            'right': {'type': 'value', 'value': '2'},
+                            'type': 'binary_op'}},
+                 {'expression': {'type': 'value', 'value': 'b'},
+                  'type': 'print'}],
+  'type': 'SEQ'},
+ {'statements': [{'condition': {'left': 'x',
+                                'operator': '>',
+                                'right': {'type': 'value', 'value': '10'},
+                                'type': 'binary_op'},
+                  'false_branch': [{'expression': {'type': 'value',
+                                                   'value': 'x is less than or '
+                                                            'equal to 10'},
+                                    'type': 'print'}],
+                  'true_branch': [{'expression': {'type': 'value',
+                                                  'value': 'x is greater than '
+                                                           '10'},
+                                   'type': 'print'}],
+                  'type': 'if'}],
+  'type': 'SEQ'},
+ {'statements': [{'body': [{'identifier': 'x',
+                            'type': 'assignment',
+                            'value': {'left': 'x',
+                                      'operator': '+',
+                                      'right': {'type': 'value', 'value': '1'},
+                                      'type': 'binary_op'}}],
+                  'condition': {'left': 'x',
+                                'operator': '<',
+                                'right': {'type': 'value', 'value': '10'},
+                                'type': 'binary_op'},
+                  'type': 'while'},
+                 {'expression': {'type': 'value', 'value': 'x'},
+                  'type': 'print'}],
+  'type': 'SEQ'},
+ {'statements': [{'condition': {'left': 'x',
+                                'operator': '>',
+                                'right': {'left': '5',
+                                          'operator': 'and',
+                                          'right': {'left': 'y',
+                                                    'operator': '<',
+                                                    'right': {'type': 'value',
+                                                              'value': '10'},
+                                                    'type': 'binary_op'},
+                                          'type': 'binary_op'},
+                                'type': 'binary_op'},
+                  'false_branch': [{'expression': {'type': 'value',
+                                                   'value': 'Condition is '
+                                                            'false'},
+                                    'type': 'print'}],
+                  'true_branch': [{'expression': {'type': 'value',
+                                                  'value': 'Condition is true'},
+                                   'type': 'print'}],
+                  'type': 'if'}],
+  'type': 'SEQ'},
+ {'statements': [{'identifier': 'g', 'prompt': '9', 'type': 'input'},
+                 {'identifier': 'a',
+                  'type': 'assignment',
+                  'value': {'argument': {'type': 'value', 'value': '5'},
+                            'function': 'fibonacci',
+                            'type': 'function_call'}},
+                 {'expression': {'type': 'value', 'value': 'a'},
+                  'type': 'print'},
+                 {'expression': {'type': 'value', 'value': 'g'},
+                  'type': 'print'}],
+  'type': 'SEQ'},
+ {'statements': [{'identifier': 'b',
+                  'type': 'assignment',
+                  'value': {'argument': {'type': 'value', 'value': '4'},
+                            'function': 'factorial',
+                            'type': 'function_call'}},
+                 {'expression': {'type': 'value', 'value': 'b'},
+                  'type': 'print'}],
+  'type': 'SEQ'}]
+
+
+
+
+
+TESTES 100% OK
+------------------------------
+
+PAR {
+    x = 0;
+    while (x < 10) {
+       x = x + 1;
+       v = factorial(x);
+       print("@");
+       print(v);
+    }
+    print("teste2");
+}
+
+
+PAR {
+    x = 0;
+    while (x < 10) {
+        x = x + 1;
+        v = fibonacci(x);
+        print("#");
+        print(v);
+    }
+    print("teste5");
+}
+SEQ {
+    print("teste1");
+    x = fibonacci(7);
+    print(x);
+
+    dfg = 5 + 3;
+    print("teste1.1");
+
+}
+
+SEQ {
+    g = INPUT("digite aqui o numero a printar ");
+    h = INPUT("busque o numero da sequencia de fibonacci ");
+    a = fibonacci(h);
+    print(g);
+    print(a);
+}
+
+SEQ {
+    print("Hello, World!");
+}
+
+SEQ {
+    print("Hello, World!");
+    a = 5 + 3;
+    b = a * 2;
+    print(b);
+}
+
+
+  
+SEQ {
+    g = INPUT("digite aqui o numero a printar ");
+    h = INPUT("busque o numero da sequencia de fibonacci ");
+    a = fibonacci(h);
+    print(g);
+    print(a);
+}
+SEQ {
+    print("Hello, World!");
+}
+SEQ {
+    print("Hello, World!");
+    a = 5 + 3;
+    b = a * 2;
+    print(b);
+}
+
+PAR {
+    print("This is parallel process 1");
+    print("This is parallel process 2");
+}
+
+
+
+SEQ {
+    print("teste2");
+    if (x > 10) {
+        print("x is greater than 10");
+    } else {
+        print("x is less than or equal to 10");
+    }
+}
