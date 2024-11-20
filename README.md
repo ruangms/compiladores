@@ -126,63 +126,129 @@ Hello, World!
 
 
 
-#TESTES 100% OK
+# TESTES 100% OK
 
+Aqui está uma lista organizada dos testes que você forneceu:
 
-SEQ {
-    print("Hello, World!");
-}
-SEQ {
-    a = 5 + 3;
-    b = a * 2;
-    print(b);
-}
-SEQ {
-    print("Hello, World!");
-    a = 5 + 3;
-    b = a * 2;
-    print(b);
-}
-SEQ {
-    if (x > 10) {
-        print("x is greater than 10");
-    } else {
-        print("x is less than or equal to 10");
-    }
-}
-SEQ {
-    while (x < 10) {
-        x = x + 1;
-    }
-    print(x);
-}
+### Testes Sequenciais (SEQ)
+1. **Teste 1 - SEQ: Fibonacci com impressão**
+   ```plaintext
+   SEQ {
+       print("teste1");
+       x = fibonacci(7);
+       print(x);
+       dfg = 5 + 3;
+       print("teste1.1");
+   }
+   ```
 
-PAR {
-    print("This is parallel process 1");
-    print("This is parallel process 2");
-}
+2. **Teste 2 - SEQ: Entrada e Fibonacci**
+   ```plaintext
+   SEQ {
+       g = INPUT("digite aqui o numero a printar ");
+       h = INPUT("busque o numero da sequencia de fibonacci ");
+       a = fibonacci(h);
+       print(g);
+       print(a);
+   }
+   ```
 
+3. **Teste 3 - SEQ: Impressão Simples**
+   ```plaintext
+   SEQ {
+       print("Hello, World!");
+   }
+   ```
 
+4. **Teste 4 - SEQ: Atribuições e Impressão**
+   ```plaintext
+   SEQ {
+       print("Hello, World!");
+       a = 5 + 3;
+       b = a * 2;
+       print(b);
+   }
+   ```
 
-SEQ {
-    g = INPUT();
-    a = fibonacci(5);
-    print(a);
-    print(g);
-}
-SEQ {
-    if (x > 5 and y < 10) {
-        print("Condition is true");
-    } else {
-        print("Condition is false");
-    }
-}
-    
+5. **Teste 5 - SEQ: Entrada e Fibonacci (repetido)**
+   ```plaintext
+   SEQ {
+       g = INPUT("digite aqui o numero a printar ");
+       h = INPUT("busque o numero da sequencia de fibonacci ");
+       a = fibonacci(h);
+       print(g);
+       print(a);
+   }
+   ```
 
-SEQ {
-    b = factorial(4);
-    print(b);
+6. **Teste 6 - SEQ: Impressão Simples (repetido)**
+   ```plaintext
+   SEQ {
+       print("Hello, World!");
+   }
+   ```
 
-}
+7. **Teste 7 - SEQ: Atribuições e Impressão (repetido)**
+   ```plaintext
+   SEQ {
+       print("Hello, World!");
+       a = 5 + 3;
+       b = a * 2;
+       print(b);
+   }
+   ```
 
+8. **Teste 8 - SEQ: Condicional**
+   ```plaintext
+   SEQ {
+       print("teste2");
+       if (x > 10) {
+           print("x is greater than 10");
+       } else {
+           print("x is less than or equal to 10");
+       }
+   }
+   ```
 
+---
+
+### Testes Paralelos (PAR)
+1. **Teste 1 - PAR: Fatorial**
+   ```plaintext
+   PAR {
+       x = 0;
+       while (x < 10) {
+          x = x + 1;
+          v = factorial(x);
+          print("@");
+          print(v);
+       }
+       print("teste2");
+   }
+   ```
+
+2. **Teste 2 - PAR: Fibonacci**
+   ```plaintext
+   PAR {
+       x = 0;
+       while (x < 10) {
+           x = x + 1;
+           v = fibonacci(x);
+           print("#");
+           print(v);
+       }
+       print("teste5");
+   }
+   ```
+
+3. **Teste 3 - PAR: Impressões Paralelas**
+   ```plaintext
+   PAR {
+       print("This is parallel process 1");
+       print("This is parallel process 2");
+   }
+   ```
+
+---
+
+Cada um desses testes foi estruturado para verificar funcionalidades diferentes, como a execução de loops, funções recursivas (fatorial, fibonacci), entrada de dados (`INPUT`), condicionais (`if-else`), e execução paralela com o uso do comando `PAR`.
