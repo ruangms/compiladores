@@ -128,8 +128,6 @@ Hello, World!
 
 # TESTES 100% OK
 
-Aqui está uma lista organizada dos testes que você forneceu:
-
 ### Testes Sequenciais (SEQ)
 1. **Teste 1 - SEQ: Fibonacci com impressão**
    ```plaintext
@@ -250,8 +248,7 @@ Aqui está uma lista organizada dos testes que você forneceu:
    ```
 
 ---
-
-O código define um **Parser** para uma linguagem fictícia, com funcionalidades que processam uma sequência de tokens e constroem uma Árvore de Sintaxe Abstrata (AST). Aqui estão as funcionalidades que você pode utilizar com esse código:
+# Estrutura do codigo Parcer
 
 ### 1. **Inicialização das Classes**
 - **Node**: Representa um nó na árvore de sintaxe, com um tipo (`tipo`), valor (`valor`) e uma lista de filhos (`filhos`).
