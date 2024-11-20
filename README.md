@@ -251,4 +251,72 @@ Aqui está uma lista organizada dos testes que você forneceu:
 
 ---
 
-Cada um desses testes foi estruturado para verificar funcionalidades diferentes, como a execução de loops, funções recursivas (fatorial, fibonacci), entrada de dados (`INPUT`), condicionais (`if-else`), e execução paralela com o uso do comando `PAR`.
+O código define um **Parser** para uma linguagem fictícia, com funcionalidades que processam uma sequência de tokens e constroem uma Árvore de Sintaxe Abstrata (AST). Aqui estão as funcionalidades que você pode utilizar com esse código:
+
+### 1. **Inicialização das Classes**
+- **Node**: Representa um nó na árvore de sintaxe, com um tipo (`tipo`), valor (`valor`) e uma lista de filhos (`filhos`).
+  - `Node(tipo, valor=None, filhos=None)` — Cria um novo nó com um tipo, um valor e filhos (opcional).
+
+- **Parser**: Classe que implementa a análise sintática de um código baseado em tokens. Recebe uma lista de tokens como entrada.
+  - `Parser(tokens)` — Inicializa o parser com os tokens.
+
+### 2. **Funções de Análise (Parsing)**
+Estas funções são responsáveis por processar os tokens e construir a árvore de sintaxe:
+
+#### 2.1. **Funções Principais**
+- `parse()`: A função principal que começa a análise e gera a árvore sintática (AST). Identifica se os tokens correspondem a um bloco `SEQ` ou `PAR` e chama os métodos correspondentes para processamento.
+- `_parse_seq()`: Analisa um bloco de instruções sequenciais (`SEQ`).
+- `_parse_par()`: Analisa um bloco de instruções paralelas (`PAR`).
+
+#### 2.2. **Funções de Análise de Comandos**
+- `_parse_statements()`: Analisa uma sequência de comandos dentro de um bloco de código. Identifica se é um comando de atribuição, condicional, laço, impressão, retorno, ou comunicação de canal.
+  
+#### 2.3. **Analisadores de Comandos Específicos**
+- `_parse_assignment()`: Analisa um comando de atribuição, seja simples ou com `INPUT`.
+- `_parse_expression()`: Analisa uma expressão, incluindo chamadas de funções (como `FIBONACCI` e `FACTORIAL`), valores simples ou operações binárias.
+- `_parse_if()`: Analisa uma estrutura condicional `IF`, com a expressão condicional e os ramos verdadeiro e falso.
+- `_parse_while()`: Analisa um laço `WHILE`, com a condição de repetição e o corpo do laço.
+- `_parse_print()`: Analisa um comando `PRINT`, com expressões que serão impressas.
+- `_parse_send_receive()`: Analisa os comandos `SEND` ou `RECEIVE`, processando os operandos dentro dos parênteses.
+- `_parse_return()`: Analisa um comando `RETURN`, que retorna um valor de uma expressão.
+
+#### 2.4. **Funções Auxiliares**
+- `_match(expected_kind)`: Verifica se o próximo token corresponde ao tipo esperado (`expected_kind`). Se sim, consome o token e avança, caso contrário, gera um erro de sintaxe.
+- `_peek()`: Retorna o próximo token sem consumi-lo.
+- `id()`: Analisa um identificador (token do tipo `IDENTIFIER`).
+- `_parse_binary_operation(left)`: Analisa uma operação binária (como soma, subtração, etc.) entre dois operandos.
+
+### 3. **Funcionalidades Específicas de Token**
+O código também lida com uma variedade de tokens, incluindo:
+- **Funções**: `FIBONACCI` e `FACTORIAL`.
+- **Operadores**: como `+`, `-`, `*`, `>`, `<`, `AND`.
+- **Comandos**: `IF`, `WHILE`, `PRINT`, `RETURN`, `SEND`, `RECEIVE`, `C_CHANNEL`.
+- **Comandos de Atribuição**: Atribuições simples e a instrução de `INPUT`.
+- **Comunicação de Canal**: `C_CHANNEL` (comentado na versão do código).
+
+### 4. **Construção da AST**
+A árvore sintática gerada pelo parser terá a estrutura definida pelos métodos de parsing, com um tipo de nó e valores/filhos conforme os comandos e expressões analisadas.
+
+### Exemplo de Saída (AST)
+Para um código de entrada simples como:
+```plaintext
+SEQ {
+    x = 5;
+    y = x + 3;
+    PRINT("Result: ", y);
+}
+```
+A árvore gerada será algo como:
+```python
+{
+    'type': 'SEQ',
+    'statements': [
+        {'type': 'assignment', 'identifier': 'x', 'value': {'type': 'value', 'value': 5}},
+        {'type': 'assignment', 'identifier': 'y', 'value': {'type': 'binary_op', 'operator': '+', 'left': {'type': 'identifier', 'value': 'x'}, 'right': {'type': 'value', 'value': 3}}},
+        {'type': 'print', 'items': [{'type': 'string', 'value': 'Result: '}, {'type': 'identifier', 'value': 'y'}]}
+    ]
+}
+```
+
+### Conclusão
+Com esse parser, você pode analisar código em uma linguagem definida por esses tokens e gerar uma AST que pode ser usada para interpretação, execução ou outras transformações do código. Você também tem a possibilidade de modificar o parser ou adicionar novos tipos de comando ou expressão conforme necessário.
