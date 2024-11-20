@@ -122,3 +122,67 @@ Resultado:
 144
 Hello, World!
 
+
+
+
+
+#TESTES 100% OK
+
+
+SEQ {
+    print("Hello, World!");
+}
+SEQ {
+    a = 5 + 3;
+    b = a * 2;
+    print(b);
+}
+SEQ {
+    print("Hello, World!");
+    a = 5 + 3;
+    b = a * 2;
+    print(b);
+}
+SEQ {
+    if (x > 10) {
+        print("x is greater than 10");
+    } else {
+        print("x is less than or equal to 10");
+    }
+}
+SEQ {
+    while (x < 10) {
+        x = x + 1;
+    }
+    print(x);
+}
+
+PAR {
+    print("This is parallel process 1");
+    print("This is parallel process 2");
+}
+
+
+
+SEQ {
+    g = INPUT();
+    a = fibonacci(5);
+    print(a);
+    print(g);
+}
+SEQ {
+    if (x > 5 and y < 10) {
+        print("Condition is true");
+    } else {
+        print("Condition is false");
+    }
+}
+    
+
+SEQ {
+    b = factorial(4);
+    print(b);
+
+}
+
+
